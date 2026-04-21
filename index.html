@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.com : iphone</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            margin: 0;
+            background-color: #fff;
+            color: #0f1111;
+        }
+
+        /* Nav Header */
+        header {
+            background-color: #131921;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: #f90;
+            font-family: serif;
+        }
+
+        .nav-search {
+            flex-grow: 1;
+            display: flex;
+            max-width: 800px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 20px;
+        }
+
+        .nav-search select {
+            background: #f3f3f3;
+            border: none;
+            padding: 0 10px;
+            border-right: 1px solid #ccc;
+            outline: none;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .nav-search input {
+            flex-grow: 1;
+            border: none;
+            padding: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .nav-search button {
+            background-color: #febd69;
+            border: none;
+            width: 45px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .nav-search button:hover {
+            background-color: #f3a847;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .nav-right div {
+            line-height: 1.2;
+            cursor: pointer;
+        }
+
+        .nav-right span {
+            font-size: 12px;
+            font-weight: normal;
+            color: #ccc;
+            display: block;
+        }
+
+        /* Sub Header */
+        .sub-header {
+            background-color: #232f3e;
+            color: white;
+            padding: 8px 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .sub-header span {
+            cursor: pointer;
+        }
+
+        .sub-header span:hover {
+            border-bottom: 1px solid #fff;
+        }
+
+        /* Main Layout */
+        .page-layout {
+            display: flex;
+            padding: 20px;
+            max-width: 1500px;
+            margin: auto;
+            gap: 25px;
+        }
+
+        /* Left Sidebar (Filters) */
+        .filters-sidebar {
+            width: 220px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .filters-sidebar h3 {
+            font-size: 14px;
+            margin: 10px 0 5px;
+        }
+
+        .filters-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px;
+        }
+
+        .filters-sidebar li {
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .filters-sidebar li:hover {
+            color: #c7511f;
+        }
+
+        .filters-sidebar input {
+            margin-right: 8px;
+        }
+
+        /* Main Results */
+        .results-main {
+            flex-grow: 1;
+        }
+
+        .results-header {
+            font-size: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 0 #ddd;
+            padding-bottom: 10px;
+        }
+
+        .results-header strong {
+            color: #c45500;
+        }
+
+        /* List Product Card */
+        .product-list-card {
+            display: flex;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-list-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            background: #f8f8f8;
+            border-radius: 4px;
+        }
+
+        .product-info {
+            flex-grow: 1;
+            padding: 10px 0;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #0f1111;
+            margin-bottom: 5px;
+            cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-title:hover {
+            color: #c7511f;
+            text-decoration: underline;
+        }
+
+        .stars {
+            color: #ffa41c;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .price-section {
+            margin-top: 10px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: 400;
+        }
+
+        .price span.currency {
+            font-size: 14px;
+            vertical-align: top;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .price span.cents {
+            font-size: 14px;
+            vertical-align: top;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .past-price {
+            color: #565959;
+            text-decoration: line-through;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        .prime-badge {
+            color: #00a8e1;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .delivery-info {
+            font-size: 14px;
+            color: #565959;
+            margin-top: 5px;
+        }
+
+        /* Right Sidebar (Ad) */
+        .ad-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .scam-ad {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+            position: relative;
+            background: linear-gradient(180deg, #fff 0%, #fff 70%, #fffae8 100%);
+        }
+
+        .scam-ad:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: #f90;
+        }
+
+        .scam-ad .sponsored {
+            font-size: 11px;
+            color: #555;
+            text-align: right;
+            margin-bottom: 5px;
+        }
+
+        .scam-ad img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .scam-ad h3 {
+            color: #cc0000;
+            margin: 10px 0 5px;
+            font-size: 18px;
+            animation: pulse-text 1.5s infinite;
+        }
+
+        @keyframes pulse-text {
+            0% {
+                color: #cc0000;
+            }
+
+            50% {
+                color: #ff0000;
+            }
+
+            100% {
+                color: #cc0000;
+            }
+        }
+
+        .scam-ad .ad-desc {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .scam-ad .ad-btn {
+            background-color: #ffd814;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 100px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(213, 217, 217, .5);
+            cursor: pointer;
+        }
+
+        .scam-ad .ad-btn:hover {
+            background-color: #f7ca00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Mockup -->
+    <header>
+        <div class="nav-left">
+            <div class="logo">amaz<span>o</span>n</div>
+            <div class="nav-right" style="margin-right: 15px; display: none;">
+                <!-- Hidden on smaller screens for simplicity -->
+            </div>
+        </div>
+        <div class="nav-search">
+            <select>
+                <option>All</option>
+            </select>
+            <input type="text" value="iphone">
+            <button>🔍</button>
+        </div>
+        <div class="nav-right">
+            <div><span>Hello, sign in</span><strong>Account & Lists</strong></div>
+            <div><span>Returns</span><strong>& Orders</strong></div>
+            <div style="font-size: 20px;">🛒</div>
+        </div>
+    </header>
+    <div class="sub-header">
+        <span>☰ All</span>
+        <span>Today's Deals</span>
+        <span>Customer Service</span>
+        <span>Registry</span>
+        <span>Gift Cards</span>
+        <span>Sell</span>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="page-layout">
+
+        <!-- Left Sidebar: Filters -->
+        <div class="filters-sidebar">
+            <h3>Eligible for Free Shipping</h3>
+            <ul>
+                <li><input type="checkbox"> Free Shipping</li>
+            </ul>
+
+            <h3>Brand</h3>
+            <ul>
+                <li><input type="checkbox"> Apple</li>
+                <li><input type="checkbox"> Samsung</li>
+                <li><input type="checkbox"> Google</li>
+            </ul>
+
+            <h3>Customer Reviews</h3>
+            <ul>
+                <li>★★★★☆ & Up</li>
+                <li>★★★☆☆ & Up</li>
+                <li>★★☆☆☆ & Up</li>
+                <li>★☆☆☆☆ & Up</li>
+            </ul>
+
+            <h3>Price</h3>
+            <ul>
+                <li>Under ₹15,000</li>
+                <li>₹15,000 to ₹40,000</li>
+                <li>₹40,000 to ₹70,000</li>
+                <li>₹70,000 & above</li>
+            </ul>
+        </div>
+
+        <!-- Center: Search Results -->
+        <div class="results-main">
+            <div class="results-header">
+                1-16 of over 1,000 results for <strong>"iphone"</strong>
+            </div>
+
+            <!-- Product 1 -->
+            <div class="product-list-card">
+                <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=400&amp;h=400&amp;fit=crop"
+                    alt="iPhone 15">
+                <div class="product-info">
+                    <div class="product-title">Apple iPhone 15, 128GB, Black</div>
+                    <div class="stars">★★★★☆ <span style="color: #007185; font-size: 14px;">(1,241)</span></div>
+                    <div style="font-size: 12px; color: #565959;">500+ bought in past month</div>
+                    <div class="price-section">
+                        <span class="price"><span class="currency">₹</span>51,999<span class="cents">00</span></span>
+                        <span class="past-price">₹74,999.00</span>
+                    </div>
+                    <div class="prime-badge">✓ prime</div>
+                    <div class="delivery-info">FREE delivery <strong>Tomorrow, Apr 22</strong> to your location</div>
+                    <div style="margin-top: 5px; font-size: 12px; color: #cc0000;">Only 8 left in stock - order soon.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-list-card">
+                <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&amp;h=400&amp;fit=crop"
+                    alt="iPhone 13">
+                <div class="product-info">
+                    <div class="product-title">Apple iPhone 13, 128GB, Blue</div>
+                    <div class="stars">★★★★☆ <span style="color: #007185; font-size: 14px;">(15,820)</span></div>
+                    <div style="font-size: 12px; color: #565959;">2K+ bought in past month</div>
+                    <div class="price-section">
+                        <span class="price"><span class="currency">₹</span>34,999<span class="cents">00</span></span>
+                        <span class="past-price">₹37,999.00</span>
+                    </div>
+                    <div class="prime-badge">✓ prime</div>
+                    <div class="delivery-info">FREE delivery <strong>Thu, Apr 24</strong></div>
+                    <div style="margin-top: 5px; font-size: 12px; color: #007185;">Climate Pledge Friendly</div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-list-card">
+                <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&amp;h=400&amp;fit=crop"
+                    alt="iPhone 12">
+                <div class="product-info">
+                    <div class="product-title">Apple iPhone 12, 64GB, Black</div>
+                    <div class="stars">★★★★☆ <span style="color: #007185; font-size: 14px;">(24,192)</span></div>
+                    <div style="font-size: 12px; color: #565959;">1K+ bought in past month</div>
+                    <div class="price-section">
+                        <span class="price"><span class="currency">₹</span>24,999<span class="cents">00</span></span>
+                    </div>
+                    <div class="prime-badge">✓ prime</div>
+                    <div class="delivery-info">FREE delivery <strong>Tomorrow, Apr 22</strong></div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-list-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&amp;h=400&amp;fit=crop"
+                    alt="iPhone 14 Pro">
+                <div class="product-info">
+                    <div class="product-title">Apple iPhone 14 Pro, 128GB, Deep Purple
+                    </div>
+                    <div class="stars">★★★★☆ <span style="color: #007185; font-size: 14px;">(4,213)</span></div>
+                    <div style="font-size: 12px; color: #565959;">800+ bought in past month</div>
+                    <div class="price-section">
+                        <span class="price"><span class="currency">₹</span>56,999<span class="cents">00</span></span>
+                        <span class="past-price">₹62,999.00</span>
+                    </div>
+                    <div class="prime-badge">✓ prime</div>
+                    <div class="delivery-info">FREE delivery <strong>Tomorrow, Apr 22</strong></div>
+                    <div style="margin-top: 5px; font-size: 12px; color: #cc0000;">Only 12 left in stock - order soon.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-list-card">
+                <img src="https://loremflickr.com/400/400/iphone?lock=5" alt="iPhone SE">
+                <div class="product-info">
+                    <div class="product-title">Apple iPhone SE (3rd Gen), 64GB, Midnight</div>
+                    <div class="stars">★★★★☆ <span style="color: #007185; font-size: 14px;">(12,192)</span></div>
+                    <div style="font-size: 12px; color: #565959;">3K+ bought in past month</div>
+                    <div class="price-section">
+                        <span class="price"><span class="currency">₹</span>12,499<span class="cents">00</span></span>
+                    </div>
+                    <div class="prime-badge">✓ prime</div>
+                    <div class="delivery-info">FREE delivery <strong>Wed, Apr 23</strong></div>
+                    <div style="margin-top: 5px; font-size: 12px; color: #007185;">Climate Pledge Friendly</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar: Malicious Ad -->
+        <div class="ad-sidebar">
+            <!-- Clicking this ad triggers redirect to deal.html -->
+            <div class="scam-ad" onclick="location.href='deal.html';">
+                <div class="sponsored">Sponsored</div>
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop"
+                    alt="iPhone Promo">
+                <h3>⚡ LIQUIDATION SALE</h3>
+                <div class="ad-desc">Get the new iPhone 17 Pro Max for ₹99!</div>
+                <p style="font-size: 12px; color: #555; margin-top: -5px; margin-bottom: 10px;">Exclusive offer. Limited
+                    stock available.</p>
+                <button class="ad-btn">Claim Offer Now</button>
+            </div>
+
+            <!-- Extracurricular disclosure -->
+            <div
+                style="margin-top: 30px; font-size: 11px; color: #999; text-align: center; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <p><strong>Educational Simulation:</strong><br /> Demonstrating malicious ad injection redirecting to
+                    index.html.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

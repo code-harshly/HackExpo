@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechDealz 24/7 - Mega Setup Flash Sale!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Top Warning Banner */
+        .top-banner {
+            background-color: #ff0000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                background-color: #cc0000;
+            }
+        }
+
+        /* Header */
+        .header {
+            background-color: #232f3e;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f3a847;
+        }
+
+        .header .search {
+            flex-grow: 1;
+            margin: 0 15px;
+        }
+
+        .header .search input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .header .cart {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-color: #f0c14b;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0f1111;
+            margin-bottom: 10px;
+            flex-grow: 1;
+        }
+
+        .stars {
+            color: #ffa41c;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .product-image {
+            text-align: center;
+            margin: 15px 0;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Deceptive Pricing */
+        .pricing {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #565959;
+            font-size: 18px;
+        }
+
+        .new-price {
+            color: #B12704;
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #ffe600;
+            color: #c00;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 3px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Urgency Elements */
+        .urgency-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .stock-warning {
+            color: red;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* Buy Button */
+        .buy-btn {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+            border: 1px solid #a88734;
+            color: #111;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .4) inset;
+            animation: pulse-border 1.5s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                border-color: #a88734;
+            }
+
+            50% {
+                border-color: #ff0000;
+                box-shadow: 0 0 10px #ff0000;
+            }
+
+            100% {
+                border-color: #a88734;
+            }
+        }
+
+        /* Fake Trust Badges */
+        .trust-badges {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 11px;
+            color: #555;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .trust-badges span {
+            background: #f0f2f2;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+
+        /* Fake Reviews */
+        .reviews {
+            margin-top: 20px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .review-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .review-author {
+            font-weight: bold;
+            color: #111;
+        }
+
+        .review-text {
+            color: #333;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #232f3e;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 12px;
+            color: #ccc;
+            margin-top: 30px;
+        }
+
+        /* Popup */
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            border-left: 5px solid #00a65a;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-banner">
+        ⚠️ HIGH DEMAND: Your cart is reserved for <span id="main-timer">05:00</span>
+    </div>
+
+    <div class="header">
+        <div class="logo">TechDealz 24/7</div>
+        <div class="search">
+            <input type="text" placeholder="Search for more 99% off deals..." disabled>
+        </div>
+        <div class="cart">🛒 (3)</div>
+    </div>
+
+    <div class="content">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #c00; font-size: 36px; margin: 0;">⚡ LIQUIDATION FLASH SALE ⚡</h1>
+            <p style="font-size: 18px; color: #555;">Everything must go! Claim your devices before the timer expires.
+            </p>
+        </div>
+
+        <div class="products-grid">
+
+            <!-- Product 1: iPhone -->
+            <div class="product-card">
+                <div class="product-title">Apple iPhone 17 Pro Max 1TB (Global Edition)</div>
+                <div class="stars">★★★★★ <span
+                        style="color: #007185; font-size: 14px; font-weight: normal;">(12,492)</span></div>
+                <div style="color: green; font-size: 14px; font-weight: bold;">In Stock - Ships immediately</div>
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop"
+                        alt="iPhone">
+                </div>
+
+                <div class="pricing">
+                    <span class="old-price">₹108,000</span>
+                    <span class="new-price">₹165</span>
+                </div>
+
+                <div class="discount-badge">99.8% DISCOUNT APPLIED SECURELY!</div>
+
+                <div class="urgency-box">
+                    <div class="stock-warning">🔥 HURRY! ONLY <span class="stock-counter">3</span> LEFT!</div>
+                    <div style="font-size: 13px; font-weight: normal;">Over 408 people viewing this right now.</div>
+                </div>
+
+                <a href="hackexpo.html" class="buy-btn">ADD TO CART & CLAIM NOW</a>
+
+                <div class="trust-badges">
+                    <span>🔒 256-Bit SSL</span>
+                    <span>✅ 100% Satisfaction</span>
+                    <span>💳 Safe Payment</span>
+                </div>
+            </div>
+
+            <!-- Product 2: MacBook -->
+            <div class="product-card">
+                <div class="product-title">Apple MacBook Pro 16" M4 Max - 64GB RAM 2TB SSD</div>
+                <div class="stars">★★★★★ <span
+                        style="color: #007185; font-size: 14px; font-weight: normal;">(8,103)</span></div>
+                <div style="color: green; font-size: 14px; font-weight: bold;">In Stock - Ships immediately</div>
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop"
+                        alt="MacBook">
+                </div>
+
+                <div class="pricing">
+                    <span class="old-price">₹289,000</span>
+                    <span class="new-price">₹415</span>
+                </div>
+
+                <div class="discount-badge">BUSINESS CLOSEOUT DEAL!</div>
+
+                <div class="urgency-box">
+                    <div class="stock-warning">⚠️ WARNING! ONLY <span class="stock-counter">1</span> LEFT!</div>
+                    <div style="font-size: 13px; font-weight: normal;">Cart expires soon!</div>
+                </div>
+
+                <a href="hackexpo.html" class="buy-btn">ADD TO CART & CLAIM NOW</a>
+
+                <div class="trust-badges">
+                    <span>🔒 256-Bit SSL</span>
+                    <span>✅ 100% Satisfaction</span>
+                    <span>💳 Safe Payment</span>
+                </div>
+            </div>
+
+            <!-- Product 3: AirPods -->
+            <div class="product-card">
+                <div class="product-title">Apple AirPods Pro (3rd Generation) with MagSafe Case</div>
+                <div class="stars">★★★★☆ <span
+                        style="color: #007185; font-size: 14px; font-weight: normal;">(34,221)</span></div>
+                <div style="color: green; font-size: 14px; font-weight: bold;">In Stock - Ships immediately</div>
+
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606220588913-b3eea895123d?w=400&h=400&fit=crop"
+                        alt="AirPods">
+                </div>
+
+                <div class="pricing">
+                    <span class="old-price">₹20,500</span>
+                    <span class="new-price">₹83</span>
+                </div>
+
+                <div class="discount-badge">FACTORY ERROR - YOU WIN!</div>
+
+                <div class="urgency-box">
+                    <div class="stock-warning">🔥 HURRY! ONLY <span class="stock-counter">5</span> LEFT!</div>
+                    <div style="font-size: 13px; font-weight: normal;">Selling out extremely fast.</div>
+                </div>
+
+                <a href="hackexpo.html" class="buy-btn">ADD TO CART & CLAIM NOW</a>
+
+                <div class="trust-badges">
+                    <span>🔒 256-Bit SSL</span>
+                    <span>✅ 100% Satisfaction</span>
+                    <span>💳 Safe Payment</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="reviews">
+            <h3 style="margin-bottom: 25px; font-size: 24px;">Customer Reviews & Unboxing</h3>
+
+            <div class="review-item">
+                <div class="review-author">👤 John D. <span
+                        style="color: #c45500; font-size: 12px; margin-left: 5px;">Verified Purchase</span></div>
+                <div class="stars" style="margin-bottom: 2px;">★★★★★</div>
+                <div class="review-text">I thought this was fake, but I actually received the MacBook and iPhone
+                    yesterday! Unbelievable deal. Thank you TechDealz! My whole setup is upgraded for less than a cup of
+                    coffee.</div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-author">👤 Sarah M. <span
+                        style="color: #c45500; font-size: 12px; margin-left: 5px;">Verified Purchase</span></div>
+                <div class="stars" style="margin-bottom: 2px;">★★★★★</div>
+                <div class="review-text">Fast shipping. The 1TB model is real. Just got mine. Best ₹165 I've ever
+                    spent! Grabbed the AirPods as well.</div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-author">👤 Michael T. <span
+                        style="color: #c45500; font-size: 12px; margin-left: 5px;">Verified Purchase</span></div>
+                <div class="stars" style="margin-bottom: 2px;">★★★★★</div>
+                <div class="review-text">My friends are so jealous. Definitely grabbing another one for my wife before
+                    the sale ends. The site looks crazy but it actually delivers!</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p style="font-size: 14px;">No purchase necessary. Terms and conditions apply. This is a promotional simulation.
+        </p>
+        <p>&copy; 2026 TechDealz 24/7. All rights reserved.</p>
+    </div>
+
+    <div class="popup" id="notification-popup">
+        <strong id="popup-name">Someone</strong> from <span id="popup-location">somewhere</span> just claimed a <span
+            id="popup-product">Device</span>!
+        <br><span style="font-size: 11px; color: gray;">Just now</span>
+    </div>
+
+    <script>
+        // Timer Logic
+        let timeLeft = 300; // 5 minutes
+        const timerElement = document.getElementById('main-timer');
+
+        setInterval(() => {
+            if (timeLeft <= 0) {
+                timeLeft = 300; // Reset just to annoy
+            }
+            timeLeft--;
+            const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+            const s = (timeLeft % 60).toString().padStart(2, '0');
+            timerElement.textContent = `${m}:${s}`;
+        }, 1000);
+
+        // Fake Notifications Logic
+        const firstNames = ["Mike", "Alex", "Jessica", "David", "Emily", "Chris", "Kevin", "Lisa"];
+        const locations = ["Texas", "New York", "California", "London", "Florida", "Ontario", "Sydney"];
+        const products = ["iPhone 17 Pro Max", "MacBook Pro", "AirPods Pro"];
+
+        const popup = document.getElementById('notification-popup');
+        const popupName = document.getElementById('popup-name');
+        const popupLocation = document.getElementById('popup-location');
+        const popupProduct = document.getElementById('popup-product');
+
+        function showFakeNotification() {
+            setTimeout(() => {
+                const randomName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const randomLocation = locations[Math.floor(Math.random() * locations.length)];
+                const randomProduct = products[Math.floor(Math.random() * products.length)];
+
+                popupName.textContent = randomName;
+                popupLocation.textContent = randomLocation;
+                popupProduct.textContent = randomProduct;
+
+                popup.style.display = 'block';
+
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                    showFakeNotification();
+                }, 4000); // Hide after 4 seconds
+
+            }, Math.random() * 8000 + 4000); // Show next one after 4-12 seconds
+        }
+
+        showFakeNotification();
+    </script>
+</body>
+
+</html>
