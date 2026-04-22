@@ -808,110 +808,110 @@
       <div class="flat-title">Join HackExpo </div>
       <div class="divider"></div>
       <div class="sub-label">Don't Fall For Dark Patterns</div>
-      <div class="dates">Join us at HackExpo to learn how to identify scams, protect your data, and safeguard your
-        money.</div>
-      <div class="countdown-strip" id="countdown-strip">
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cd-days">00</div>
-          <div class="countdown-label">DAYS</div>
+      <div class="dates">Join us at HackExpo to learn, compete, and connect with the cybersecurity community through
+        workshops, CTFs, and expert sessions.
+        <div class="countdown-strip" id="countdown-strip">
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-days">00</div>
+            <div class="countdown-label">DAYS</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-hrs">00</div>
+            <div class="countdown-label">HOURS</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-min">00</div>
+            <div class="countdown-label">MINUTES</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-sec">00</div>
+            <div class="countdown-label">SECONDS</div>
+          </div>
         </div>
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cd-hrs">00</div>
-          <div class="countdown-label">HOURS</div>
-        </div>
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cd-min">00</div>
-          <div class="countdown-label">MINUTES</div>
-        </div>
-        <div class="countdown-unit">
-          <div class="countdown-num" id="cd-sec">00</div>
-          <div class="countdown-label">SECONDS</div>
-        </div>
+
+        <button class="register-btn">Register for HackExpo</button>
       </div>
-
-      <button class="register-btn">Register for HackExpo</button>
     </div>
-  </div>
 
-  <script>
-    (function () {
-      /* ── cyber grid ── */
-      const canvas = document.getElementById('grid-canvas');
-      const ctx = canvas.getContext('2d');
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        drawGrid();
-      }
-      function drawGrid() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        const sz = 42;
-        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 0.4;
-        for (let x = 0; x <= canvas.width; x += sz) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke(); }
-        for (let y = 0; y <= canvas.height; y += sz) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke(); }
-        ctx.fillStyle = 'rgba(255, 255, 255,0.55)';
-        for (let x = 0; x <= canvas.width; x += sz)
-          for (let y = 0; y <= canvas.height; y += sz) {
-            ctx.beginPath(); ctx.arc(x, y, 1.3, 0, Math.PI * 2); ctx.fill();
-          }
-      }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      /* ── particles ── */
-      const pWrap = document.getElementById('particles');
-      function spawnParticle() {
-        const p = document.createElement('div');
-        const x = Math.random() * 100;
-        const dur = 4 + Math.random() * 7;
-        const dx = (Math.random() - 0.5) * 80;
-        const h = 4 + Math.random() * 10;
-        p.style.cssText = `position:absolute;bottom:0;left:${x}%;width:1px;height:${h}px;background:#ffffff;opacity:0.45;--dx:${dx}px;animation:floatUp ${dur}s linear forwards;`;
-        pWrap.appendChild(p);
-        setTimeout(() => p.remove(), dur * 1000);
-      }
-      setInterval(spawnParticle, 160);
-
-      /* ── loader ── */
-      const bar = document.getElementById('progress-bar');
-      const barText = document.getElementById('progress-text');
-      const loader = document.getElementById('loader');
-      const reveal = document.getElementById('reveal');
-
-      let progress = 0;
-
-      const progInterval = setInterval(() => {
-        progress = Math.min(progress + Math.random() * 5 + 1.5, 100);
-        bar.style.width = progress + '%';
-        barText.textContent = '[ ' + Math.floor(progress) + '% ] ' + (progress < 100 ? 'LOADING...' : 'COMPLETE');
-        if (progress >= 100) {
-          clearInterval(progInterval);
-          setTimeout(() => {
-            loader.classList.add('fade-out');
-            setTimeout(() => { loader.style.display = 'none'; reveal.classList.add('visible'); }, 950);
-          }, 400);
+    <script>
+      (function () {
+        /* ── cyber grid ── */
+        const canvas = document.getElementById('grid-canvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          drawGrid();
         }
-      }, 110);
+        function drawGrid() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const sz = 42;
+          ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 0.4;
+          for (let x = 0; x <= canvas.width; x += sz) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke(); }
+          for (let y = 0; y <= canvas.height; y += sz) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke(); }
+          ctx.fillStyle = 'rgba(255, 255, 255,0.55)';
+          for (let x = 0; x <= canvas.width; x += sz)
+            for (let y = 0; y <= canvas.height; y += sz) {
+              ctx.beginPath(); ctx.arc(x, y, 1.3, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-      /* ── countdown to 29 May 2026 ── */
-      function updateCountdown() {
-        const target = new Date('2026-05-29T09:00:00');
-        const now = new Date();
-        const diff = target - now;
-        if (diff <= 0) { document.getElementById('countdown-strip').style.display = 'none'; return; }
-        const days = Math.floor(diff / 86400000);
-        const hrs = Math.floor((diff % 86400000) / 3600000);
-        const min = Math.floor((diff % 3600000) / 60000);
-        const sec = Math.floor((diff % 60000) / 1000);
-        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-        document.getElementById('cd-hrs').textContent = String(hrs).padStart(2, '0');
-        document.getElementById('cd-min').textContent = String(min).padStart(2, '0');
-        document.getElementById('cd-sec').textContent = String(sec).padStart(2, '0');
-      }
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    })();
-  </script>
+        /* ── particles ── */
+        const pWrap = document.getElementById('particles');
+        function spawnParticle() {
+          const p = document.createElement('div');
+          const x = Math.random() * 100;
+          const dur = 4 + Math.random() * 7;
+          const dx = (Math.random() - 0.5) * 80;
+          const h = 4 + Math.random() * 10;
+          p.style.cssText = `position:absolute;bottom:0;left:${x}%;width:1px;height:${h}px;background:#ffffff;opacity:0.45;--dx:${dx}px;animation:floatUp ${dur}s linear forwards;`;
+          pWrap.appendChild(p);
+          setTimeout(() => p.remove(), dur * 1000);
+        }
+        setInterval(spawnParticle, 160);
+
+        /* ── loader ── */
+        const bar = document.getElementById('progress-bar');
+        const barText = document.getElementById('progress-text');
+        const loader = document.getElementById('loader');
+        const reveal = document.getElementById('reveal');
+
+        let progress = 0;
+
+        const progInterval = setInterval(() => {
+          progress = Math.min(progress + Math.random() * 5 + 1.5, 100);
+          bar.style.width = progress + '%';
+          barText.textContent = '[ ' + Math.floor(progress) + '% ] ' + (progress < 100 ? 'LOADING...' : 'COMPLETE');
+          if (progress >= 100) {
+            clearInterval(progInterval);
+            setTimeout(() => {
+              loader.classList.add('fade-out');
+              setTimeout(() => { loader.style.display = 'none'; reveal.classList.add('visible'); }, 950);
+            }, 400);
+          }
+        }, 110);
+
+        /* ── countdown to 29 May 2026 ── */
+        function updateCountdown() {
+          const target = new Date('2026-05-29T09:00:00');
+          const now = new Date();
+          const diff = target - now;
+          if (diff <= 0) { document.getElementById('countdown-strip').style.display = 'none'; return; }
+          const days = Math.floor(diff / 86400000);
+          const hrs = Math.floor((diff % 86400000) / 3600000);
+          const min = Math.floor((diff % 3600000) / 60000);
+          const sec = Math.floor((diff % 60000) / 1000);
+          document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+          document.getElementById('cd-hrs').textContent = String(hrs).padStart(2, '0');
+          document.getElementById('cd-min').textContent = String(min).padStart(2, '0');
+          document.getElementById('cd-sec').textContent = String(sec).padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      })();
+    </script>
 </body>
 
 </html>
