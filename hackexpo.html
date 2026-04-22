@@ -588,6 +588,36 @@
       letter-spacing: 4px;
     }
 
+    @keyframes pulseGlow {
+      0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+      100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+
+    .bg-glow {
+      position: absolute;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, transparent 60%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulseGlow 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatGlass {
+      0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 60px rgba(0, 242, 254, 0.05), 0 0 20px rgba(0, 242, 254, 0.1);
+      }
+      50% {
+        transform: translateY(-12px);
+        box-shadow: 0 45px 80px rgba(0, 0, 0, 0.7), inset 0 0 80px rgba(0, 242, 254, 0.1), 0 0 40px rgba(0, 242, 254, 0.2);
+      }
+    }
+
     /* MODERN UI OVERRIDES */
     .glass-card {
       background: rgba(15, 15, 20, 0.6);
@@ -605,6 +635,7 @@
       max-width: 900px;
       width: 90%;
       position: relative;
+      animation: floatGlass 6s ease-in-out infinite;
     }
 
     .glass-card::after {
@@ -642,6 +673,21 @@
       letter-spacing: -2px;
       text-shadow: none;
       animation: none;
+    }
+
+    .glass-card .event-dates-new {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-top: -15px;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5));
     }
 
     .glass-card .divider {
@@ -753,6 +799,15 @@
       margin-top: 0;
     }
 
+    @keyframes pulseBtn {
+      0%, 100% {
+        box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
+      }
+      50% {
+        box-shadow: 0 15px 35px rgba(0, 242, 254, 0.5), 0 0 15px rgba(0, 242, 254, 0.3);
+      }
+    }
+
     .glass-card .register-btn {
       font-family: 'Inter', sans-serif;
       font-size: 16px;
@@ -768,6 +823,7 @@
       margin-top: 0;
       transition: all 0.3s ease;
       box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3);
+      animation: pulseBtn 3s infinite;
     }
 
     .glass-card .register-btn::before {
@@ -775,14 +831,16 @@
     }
 
     .glass-card .register-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(0, 242, 254, 0.5);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0, 242, 254, 0.6), 0 0 30px rgba(0, 242, 254, 0.4);
       background: linear-gradient(135deg, #5cbdff 0%, #1af4ff 100%);
+      animation: none;
     }
   </style>
 </head>
 
 <body>
+  <div class="bg-glow"></div>
 
   <canvas id="grid-canvas"></canvas>
   <div id="scan-lines"></div>
@@ -805,16 +863,13 @@
   <div id="reveal">
     <div class="glass-card">
       <div class="eyebrow">Educational Simulation by HackExpo</div>
-      <div class="flat-title">Join HackExpo </div>
-      <div class="flat-title" style="font-size: 36px;">on</div>
-      <div class="flat-title" style="font-size: 36px;">29th and 30th may</div>
+      <div class="flat-title">Join HackExpo</div>
+      <div class="event-dates-new">ON 29TH & 30TH MAY</div>
       <div class="divider"></div>
       <div class="sub-label">Don't Fall For Dark Patterns</div>
-      <div class="dates">Join us at HackExpo to learn, compete, and connect with the cybersecurity community through
-        workshops, CTFs, and expert sessions.
-        <div class="countdown-strip" id="countdown-strip">
-
-          <div class="countdown-unit">
+      <div class="dates">Join us at HackExpo to learn, compete, and connect with the cybersecurity community through workshops, CTFs, and expert sessions.</div>
+      <div class="countdown-strip" id="countdown-strip">
+        <div class="countdown-unit">
             <div class="countdown-num" id="cd-days">00</div>
             <div class="countdown-label">DAYS</div>
           </div>
